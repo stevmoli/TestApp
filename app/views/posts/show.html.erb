@@ -1,0 +1,17 @@
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @post.text %>
+</p>
+
+<p>
+  <strong>Posted By:</strong>
+  <%= @post.user %>
+</p>
+
+<p><%= link_to "Edit This Post", edit_post_path(@post) %></p>
+<p><%= link_to "Delete This Post", post_path(@post), method: :delete %></p>

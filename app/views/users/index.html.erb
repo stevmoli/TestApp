@@ -1,0 +1,9 @@
+<h1>All Users</h1>
+
+<table>
+  <% User.all.each do |user| %>
+    <tr>
+      <td><%= link_to user, user %></td>
+    </tr>
+  <% end %>
+</table>
