@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :password, :password_confirmation
   attr_accessor :password
   has_many :posts, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
   before_save :encrypt_password
 
   validates_confirmation_of :password
