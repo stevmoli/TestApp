@@ -13,5 +13,9 @@
   <%= @post.user %>
 </p>
 
+<%= render "comments/comments" %>
+
+<%= render "comments/new" %>
+
 <p><%= link_to "Edit This Post", edit_post_path(@post) %></p>
 <p><%= link_to "Delete This Post", post_path(@post), method: :delete %></p>

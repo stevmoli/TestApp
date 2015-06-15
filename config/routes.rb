@@ -6,7 +6,10 @@ TestApp::Application.routes.draw do
 
   get "welcome/index"
 
-  resources :users, :posts, :sessions
+  resources :users, :sessions
+  resources :posts do
+    resources :comments
+  end
 
 
   root :to => 'welcome#index'
@@ -14,10 +17,12 @@ TestApp::Application.routes.draw do
   get '/all' => redirect('/posts')
   delete "posts/:id" => 'posts#destroy'
 
-  #get "/user_posts/:user" => "posts#index", :as => "user_posts"
 
 
   get '/users/:id' => "user#show", as: "user_page"
   get '/user_posts/:id' => redirect('/users/:id')
-  #get ':user' => 'posts#index', as: 'user_posts'
+
+  #get '/posts/:id/comments/:id' => redirect('/posts/:id')
+  #delete "/post/:post_id/comments/:id" => "comments#destroy"
+  #get "/post/:post_id/comments/:id" => "user#show"
 end
