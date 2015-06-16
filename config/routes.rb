@@ -25,4 +25,5 @@ TestApp::Application.routes.draw do
   #get '/posts/:id/comments/:id' => redirect('/posts/:id')
   #delete "/post/:post_id/comments/:id" => "comments#destroy"
   #get "/post/:post_id/comments/:id" => "user#show"
+  
 end

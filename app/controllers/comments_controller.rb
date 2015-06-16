@@ -26,9 +26,7 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    puts "********************** HERE ********************"
     @post = Post.find(params[:post_id])
-    ap @post 
     @comment = Comment.find(params[:id])
   end
 
@@ -59,7 +57,11 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
     @comment.destroy
-    redirect_to @post  # confirm that this works
+    #redirect_to @post
+    respond_to do |format|
+      format.html {redirect_to @post}
+      format.js
+    end
   end
 
   private
