@@ -3,8 +3,8 @@ class CommentsController < ApplicationController
   before_filter :check_authentication, :only => [:edit, :update, :destroy]
 
   def get_comment
-    post = Post.find(params[:post_id])
-    @comment = post.comments.find(params[:id])
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
   end
 
   def check_authentication
@@ -26,6 +26,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    puts "********************** HERE ********************"
+    @post = Post.find(params[:post_id])
+    ap @post 
     @comment = Comment.find(params[:id])
   end
 
@@ -42,8 +45,8 @@ class CommentsController < ApplicationController
   end
 
   def update
-    @comment = Comment.find(params[:id])
     @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
 
     if @comment.update_attributes(comment_params)
       redirect_to @post
