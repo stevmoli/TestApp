@@ -1,8 +1,14 @@
-$('.edit').on('click', '.expand', 
+$('.comment').on('click', '.edit', 
 	function(event){
 		event.preventDefault();
 		$(this).closest('.table')
-			.find('#<%= "edit_comment_#{@comment_id}" %>')
-			.fadeToggle();
+			.find('#<%=raw("\"edit_comment_#{@comment.id}\"")%>')
+			.slideToggle();
 	}
 );
+
+// only want one of these
+
+$('.edit').click(function(){
+	$(this).next('.comment_edit').toggle();
+});
