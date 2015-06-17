@@ -1,20 +1,23 @@
-
 <% if @post.comments.first.present? %>
   <h3>Comments for this post:</h3>
 
-  <table>
+  <table class="table">
     <tr>
       <th>User</th>
       <th>Text</th>
     </tr>
 
     <% @post.comments.each do |comment| %>
-      <tr id=<%=raw("\"comment_#{comment.id}\"")%>>
+      <tr class="comment" id=<%=raw("\"comment_#{comment.id}\"")%>>
         <td><%= link_to comment.user, comment.user %><%= ": " %></td>
         <td><%= comment.body %></td>
-      
-        <td><%= link_to "Edit Comment", edit_post_comment_path(comment.post, comment) %></td>
+        <td class="edit"><%= link_to "Edit Comment", edit_post_comment_path(comment.post, comment) %></td>
         <td><%= link_to "Delete Comment", [comment.post, comment], method: :delete, data: {confirm: "Really delete this comment?"}, remote: true %></td>
+      </tr>
+      <tr id=<%=raw("\"edit_comment_#{comment.id}\"")%>>
+        <% @current_post = comment.post %>
+        <% @current_comment = comment %>
+        <th><%= render "comments/edit" %></th>
       </tr>
     <% end %>
   </table>

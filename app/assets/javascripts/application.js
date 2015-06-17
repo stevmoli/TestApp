@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require posts
 //= require comments
-
 // require_tree .

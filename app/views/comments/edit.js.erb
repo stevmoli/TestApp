@@ -1,0 +1,8 @@
+$('.edit').on('click', '.expand', 
+	function(event){
+		event.preventDefault();
+		$(this).closest('.table')
+			.find('#<%= "edit_comment_#{@comment_id}" %>')
+			.fadeToggle();
+	}
+);
