@@ -1,14 +1,29 @@
-$('.comment').on('click', '.edit', 
-	function(event){
-		event.preventDefault();
-		$(this).closest('.table')
-			.find('#<%=raw("\"edit_comment_#{@comment.id}\"")%>')
-			.slideToggle();
-	}
-);
+/*
+$(document).ready(function() {
+	function expand_edit(
+		$('.comment').on('click', '.edit', 
+			function(event){
+				event.preventDefault();
+				$(this).closest('.table').find('#<%=raw("\"edit_comment_#{@comment.id}\"")%>').slideToggle();
+			}
+		);
+	);
+});
 
 // only want one of these
 
+
 $('.edit').click(function(){
-	$(this).next('.comment_edit').toggle();
+	$(this).next('.comment_edit').slideToggle();
+});
+
+*/
+
+//TESTING BELOW
+
+$(document).ready(function() {
+	$('.edit').click(function(event){
+		event.preventDefault();
+		$(this).toggle();
+	});
 });

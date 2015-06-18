@@ -8,15 +8,15 @@
     </tr>
 
     <% @post.comments.each do |comment| %>
+      <% @comment = comment %>
       <tr class="comment" id=<%=raw("\"comment_#{comment.id}\"")%>>
         <td><%= link_to comment.user, comment.user %><%= ": " %></td>
         <td><%= comment.body %></td>
-        <td><button class="edit"><%= "Edit Comment" %></button></td>
+        <td class="edit"><%= button_tag "Edit Comment", type: "button", onclick: "expand_edit()" %></td>
         <td>
           <%= button_to "Delete Comment", post_comment_path(comment.post, comment), method: :delete, data: {confirm: "Really delete this comment?"}, remote: true %>
         </td>
       </tr>
-      <% @comment = comment %>
       <tr class="comment_edit" id=<%=raw("\"edit_comment_#{@comment.id}\"")%>>
         <% @current_post = comment.post %>
         <% @current_comment = comment %>
