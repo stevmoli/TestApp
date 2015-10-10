@@ -8,23 +8,29 @@
 </head>
 <body>
 
-<div id="user_nav">
-  <% if current_user %>
-    <% @user = current_user %>
-    <%= link_to "Home", root_path %>
-    <%= link_to "Log out", log_out_path %>
-    <%= link_to "Create New Post", new_post_path %>
-    <%= link_to "My Page", user_page_path(@user) %>
-    <%= link_to "View All Posts", posts_path %>
-    <%= link_to "View All Users", users_path %>
-    Logged in as: <%= current_user.name %>
-  <% else %>
-    <%= link_to "Home", root_path %>
-    <%= link_to "Sign up", sign_up_path %> or
-    <%= link_to "Log in", log_in_path %>
-    <%= link_to "View All Posts", posts_path %>
-    <%= link_to "View All Users", users_path %>
-  <% end %>
+<div id="user_nav" class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <% if current_user %>
+        <% @user = current_user %>
+        <a class="brand-logo"> <%= link_to "Home", root_path %> </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li> <%= link_to "Log out", log_out_path %> </li>
+          <li> <%= link_to "Create New Post", new_post_path %> </li>
+          <li> <%= link_to "My Page", user_page_path(@user) %> </li>
+          <li> <%= link_to "View All Posts", posts_path %> </li>
+          <li> <%= link_to "View All Users", users_path %> </li>
+          <li> Logged in as: <%= current_user.name %> <li>
+        </ul>
+      <% else %>
+        <%= link_to "Home", root_path %>
+        <%= link_to "Sign up", sign_up_path %> or
+        <%= link_to "Log in", log_in_path %>
+        <%= link_to "View All Posts", posts_path %>
+        <%= link_to "View All Users", users_path %>
+      <% end %>
+    </div>
+  </nav>
 </div>
 
 <% flash.each do |name, msg| %>
