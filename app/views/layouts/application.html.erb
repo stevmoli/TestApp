@@ -12,9 +12,10 @@
 <div id="user_nav" class="navbar-fixed">
   <nav>
     <div class="nav-wrapper">
+      <a class="brand-logo"> <%= link_to "Home", root_path %> </a>
       <% if current_user %>
         <% @user = current_user %>
-        <a class="brand-logo"> <%= link_to "Home", root_path %> </a>
+
 
         <ul id="nav-mobile" class="right hide-on-med-and-down">
           <li> <%= link_to "Create New Post", new_post_path %> </li>
@@ -29,20 +30,23 @@
           </ul>
 
         </ul>
-        
+
       <% else %>
-        <%= link_to "Home", root_path %>
-        <%= link_to "Sign up", sign_up_path %> or
-        <%= link_to "Log in", log_in_path %>
-        <%= link_to "View All Posts", posts_path %>
-        <%= link_to "View All Users", users_path %>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li> <%= link_to "View All Posts", posts_path %> </li>
+          <li> <%= link_to "View All Users", users_path %> </li>
+          <li> <%= link_to "Sign up", sign_up_path %> </li>
+          <li> <%= link_to "Log in", log_in_path %> </li>
+        <ul>
       <% end %>
     </div>
   </nav>
 </div>
 
 <% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, :id => "flash_#{name}" %>
+  <script type="text/javascript">
+    Materialize.toast('<%= msg %>', 4000);
+  </script>
 <% end %>
 
 <%= yield %>
