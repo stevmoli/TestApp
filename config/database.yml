@@ -3,19 +3,19 @@ development:
   encoding: utf8
   database: testapp_dev
   pool: 5
-  username: Steven
-  password: 12345
+  username: root
+  password: admin
 test:
   adapter: mysql2
   encoding: utf8
   database: testapp_test
   pool: 5
-  username: Steven
-  password: 12345
+  username: root
+  password: admin
 production:
   adapter: mysql2
   encoding: utf8
   database: testapp_production
   pool: 5
-  username: Steven
-  password: 12345
+  username: root
+  password: admin
