@@ -3,6 +3,8 @@ ruby '2.2.3'
 
 gem 'rails', '3.2.15'
 
+gem 'puma'
+
 gem 'rails_12factor'
 
 # Bundle edge Rails instead:
