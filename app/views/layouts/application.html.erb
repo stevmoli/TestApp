@@ -9,39 +9,69 @@
 </head>
 <body>
 
-<div id="user_nav" class="navbar-fixed">
-  <nav>
-    <div class="nav-wrapper">
-      <a class="brand-logo"> <%= link_to "Home", root_path %> </a>
-      <% if current_user %>
-        <% @user = current_user %>
+<nav>
+  <div id= "user_nav" class="nav-wrapper">
+    <a href ="#!" class="brand-logo"> <%= link_to "Home", root_path %> </a>
+
+    <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+      <ul class="right hide-on-med-and-down">  <!--Normal navbar contents that will disappear on smaller screens -->
+        <% if current_user %>
+          <% @user = current_user %>
 
 
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li> <%= link_to "Create New Post", new_post_path %> </li>
-          <li> <%= link_to "View All Posts", posts_path %> </li>
-          <li> <%= link_to "View All Users", users_path %> </li>
+          <ul class="right">
+            <li> <%= link_to "Create New Post", new_post_path %> </li>
+            <li> <%= link_to "View All Posts", posts_path %> </li>
+            <li> <%= link_to "View All Users", users_path %> </li>
 
-          <li><a class="dropdown-button" href="#!" data-activates="dropdown1"> Logged in as: <%= current_user.name %> <i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1"> Logged in as: <%= current_user.name %> <i class="material-icons right">arrow_drop_down</i></a></li>
 
-          <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!"> <%= link_to "My Page", user_page_path(@user) %> </a></li>
-            <li><a href="#!"> <%= link_to "Log out", log_out_path %> </a></li>
+            <ul id="dropdown1" class="dropdown-content">
+              <li><%= link_to "My Page", user_page_path(@user) %> </li>
+              <li><%= link_to "Log out", log_out_path %> </li>
+            </ul>
+
           </ul>
 
-        </ul>
+        <% else %>
+          <ul class="right">
+            <li> <%= link_to "View All Posts", posts_path %> </li>
+            <li> <%= link_to "View All Users", users_path %> </li>
+            <li> <%= link_to "Sign up", sign_up_path %> </li>
+            <li> <%= link_to "Log in", log_in_path %> </li>
+          </ul>
+        <% end %>
+      </ul>
 
-      <% else %>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li> <%= link_to "View All Posts", posts_path %> </li>
-          <li> <%= link_to "View All Users", users_path %> </li>
-          <li> <%= link_to "Sign up", sign_up_path %> </li>
-          <li> <%= link_to "Log in", log_in_path %> </li>
-        <ul>
-      <% end %>
-    </div>
-  </nav>
-</div>
+      <ul class="side-nav" id="mobile-demo">  <!--Same navbar contents that will appear as a collapsable menu on smaller screens -->
+        <% if current_user %>
+          <% @user = current_user %>
+
+
+            <li> <%= link_to "Create New Post", new_post_path %> </li>
+            <li> <%= link_to "View All Posts", posts_path %> </li>
+            <li> <%= link_to "View All Users", users_path %> </li>
+
+            <li> <a>Logged in as: <%= current_user.name %></a> </li>
+            <li><%= link_to "My Page", user_page_path(@user) %></li>
+            <li><%= link_to "Log out", log_out_path %></li>
+
+
+
+        <% else %>
+
+            <li> <%= link_to "View All Posts", posts_path %> </li>
+            <li> <%= link_to "View All Users", users_path %> </li>
+            <li> <%= link_to "Sign up", sign_up_path %> </li>
+            <li> <%= link_to "Log in", log_in_path %> </li>
+
+        <% end %>
+      </ul>
+
+  </div>
+</nav>
+
 
 <% flash.each do |name, msg| %>
   <script type="text/javascript">
